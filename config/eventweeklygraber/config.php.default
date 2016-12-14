@@ -1,0 +1,91 @@
+<?php
+
+$cfg = [
+	'database' => [
+		'adapter' => 'Mysql',
+		'host' => 'localhost',
+		'username' => 'root',
+		'password' => 'root',
+		'dbname' => 'ew',
+		'charset' => 'utf8'
+	],
+
+	'cache' => [
+		'adapter' => 'Memcache',
+		'cacheDir' => '',
+		'host' => '127.0.0.1',
+		'port' => '11211',
+		'persistent' => false,
+		'lifetime' => '84600'
+	],
+
+	'queue' => [
+		'adapter' => 'RabbitMQ',
+		'host' => 'localhost',
+		'vhost' => '/',
+		'port' => '5672',
+		'login' => 'guest',
+		'password' => 'guest',
+		'harvester' => [
+			'exchange' => 'amq.direct',
+			'type' => AMQP_EX_TYPE_DIRECT,
+			'routing_key' => 'harvester.name'
+		],
+		'harvesterEbrite' => [
+			'exchange' => 'amq.direct',
+			'type' => AMQP_EX_TYPE_DIRECT,
+			'routing_key' => 'harvester.name'
+		],
+		'harvesterCreators' => [
+			'exchange' => 'amq.direct',
+			'type' => AMQP_EX_TYPE_DIRECT,
+			'routing_key' => 'harvester.name'
+		],
+		'harvesterCustom' => [
+			'exchange' => 'amq.direct',
+			'type' => AMQP_EX_TYPE_DIRECT,
+			'routing_key' => 'harvester.name'
+		],
+		'distributor' => [
+			'exchange' => 'amq.fanout',
+			'routing_key' => 'distributor'
+		]
+	],
+
+	'application' => [
+		'modelsDir' => APPLICATION_PATH . '/models',
+		'libraryDir' => APPLICATION_PATH . '/library',
+
+		'GeoIp2' => [
+            'userId' => 86277,
+            'licenseKey' => 'gAsqWYLrLpdh'
+        ],
+
+	'uploadDir' => '/var/www/EventWeekly/public/upload/',
+
+		'defautTask' => 'observer',
+		'defaultAction' => 'observe'
+	],
+	
+	'facebook' => [
+	    'appId' => 'YOUR_APP_ID',
+	    'appSecret' => 'YOUR_APP_SECRET',
+		'querySourceFile' => '/path/to/queries/list/filename.txt',
+		'idSourceFile' => '/path/to/ids/list/filename.txt',
+	],
+	
+	'eventbrite' => [
+		'appKey' => 'YOUR_APP_KEY',
+		'authToken' => 'YOUR_APP_AUTH_TOKEN',
+		'anonToken' => 'YOUR_APP_ANON_TOKEN', 
+		'clientSecret' => 'YOUR_APP_CLIENT_SECRET',
+		'settings' => [
+			'parseType' => 'city'
+		]	
+	],
+
+	'threads' => false,
+
+	'daemon' => []
+
+];
